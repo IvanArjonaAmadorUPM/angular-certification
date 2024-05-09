@@ -1,0 +1,41 @@
+<div class="main-container">
+  <span class="title"> Step 1: Choose your model and color</span>
+  @if (models.length > 0) {
+  <div class="selector">
+    <div>
+      <mat-form-field>
+        <mat-label>Select your car model</mat-label>
+        <mat-select
+          id="modelSelect"
+          [(value)]="modelSelect"
+          (selectionChange)="onSelectModel($event.value)"
+        >
+          @for (model of models; track models) {
+          <mat-option [value]="model.code">{{ model.description }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    @if (modelSelect){
+    <div>
+      <mat-form-field>
+        <mat-label>Select your color</mat-label>
+        <mat-select
+          id="colorSelect"
+          [(value)]="colorSelect"
+          (selectionChange)="onSelectColor($event.value)"
+        >
+          @for (color of colors; track colors) {
+          <mat-option [value]="color.code">{{ color.description }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    }
+  </div>
+  @if (imgUrl) {
+  <img class="img" [src]="imgUrl" loading="lazy" />
+  } } @else {
+  <mat-spinner />
+  }
+</div>

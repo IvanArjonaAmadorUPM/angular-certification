@@ -1,0 +1,52 @@
+<div class="main-container">
+  <span class="title"> Step 3: Summary</span>
+  <span class="subtitle"> Your Tesla {{ modelSelected?.description }}</span>
+  <div class="info-section">
+    <div>
+      <div class="option">
+        <span class="selection">
+          {{ configurationSelected?.description }}
+        </span>
+        <span> {{ configurationSelected?.price | currency : "USD" }} </span>
+      </div>
+      <div>
+        <span
+          >Range: {{ configurationSelected?.range }} - Max speed:
+          {{ configurationSelected?.speed }}</span
+        >
+      </div>
+    </div>
+
+    <div class="option">
+      <span class="selection">
+        {{ colorSelected?.description }}
+      </span>
+      <span> {{ colorSelected?.price | currency : "USD" }} </span>
+    </div>
+    @if (includeYoke) {
+    <div class="option">
+      <span class="selection"> Yoke package </span>
+      <span> {{ extraCost | currency : "USD" }} </span>
+    </div>
+    } @if (includeTow) {
+    <div class="option">
+      <span class="selection"> Tow Hitch package </span>
+      <span> {{ extraCost | currency : "USD" }} </span>
+    </div>
+    }
+  </div>
+  <mat-divider class="separator" />
+  <div class="total-cost">
+    <div class="total-cost-description">
+      <span class="subtitle"> TOTAL COST </span>
+    </div>
+    <span class="subtitle"> {{ totalCost | currency : "USD" }} </span>
+  </div>
+  <mat-divider />
+
+  @if (imgUrl) {
+  <img class="img" [src]="imgUrl" loading="lazy" />
+  } @else {
+  <mat-spinner />
+  }
+</div>

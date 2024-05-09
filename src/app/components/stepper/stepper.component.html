@@ -1,0 +1,21 @@
+<div class="main-container">
+  <button mat-flat-button color="accent" (click)="onStepperClick('1')">
+    Step 1
+  </button>
+  <button
+    mat-flat-button
+    color="accent"
+    [disabled]="!isSetter2Available"
+    (click)="onStepperClick('2')"
+  >
+    Step 2
+  </button>
+  <button
+    mat-flat-button
+    color="accent"
+    [disabled]="!isSetter3Available"
+    (click)="onStepperClick('3')"
+  >
+    Step 3
+  </button>
+</div>

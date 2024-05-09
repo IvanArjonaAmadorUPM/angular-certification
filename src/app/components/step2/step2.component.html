@@ -1,0 +1,53 @@
+<div class="main-container">
+  <span class="title"> Step 2: Select your config and options</span>
+
+  <div class="formContainer">
+    <div class="optionContainer">
+      <span>Config: </span>
+      <mat-form-field>
+        <mat-label>Select your configuration</mat-label>
+        <mat-select
+          [(value)]="configSelect"
+          (selectionChange)="onSelectOption($event.value)"
+          id="configSelect"
+        >
+          @for (option of options?.configs; track options) {
+          <mat-option [value]="option.id">{{ option.description }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    @if (configSelect) {
+    <div class="configDescription">
+      <span> Range {{ configSelectConfiguration?.range }} miles -</span>
+      <span> Max speed {{ configSelectConfiguration?.speed }} -</span>
+      <span>
+        Price {{ configSelectConfiguration?.price | currency : "USD" }}</span
+      >
+    </div>
+    } @if (options?.towHitch) {
+    <div class="optionContainer">
+      <span> Tow Hitch ?</span>
+      <mat-checkbox
+        [checked]="includeTow"
+        (change)="onTowHitchClicked($event.checked)"
+        id="includeTow"
+      />
+    </div>
+    } @if (options?.yoke) {
+    <div>
+      <span>Yoke steering wheel?</span>
+      <mat-checkbox
+        [checked]="includeYoke"
+        (change)="onYokeClicked($event.checked)"
+        id="includeYoke"
+      />
+    </div>
+    } @if (imgUrl) {
+    <img class="img" [src]="imgUrl" loading="lazy" />
+    } @else {
+    <mat-spinner />
+    }
+  </div>
+</div>
